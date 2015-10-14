@@ -1,5 +1,5 @@
 FROM centos:centos7
-MAINTAINER NodeBB Docker Team <docker-devs@nodebb.org>
+MAINTAINER TenxCloud Team <service@tenxcloud.org>
 
 # install main packages:
 RUN yum -y update ; yum clean all
@@ -10,8 +10,8 @@ RUN yum -y install nodejs git ImageMagick npm
 RUN yum -y install openssl openssl-devel
 
 # clone nodebb and install it
-RUN cd /opt ; git clone -b v0.5.x https://github.com/NodeBB/NodeBB nodebb
-RUN cd /opt/nodebb ; npm install
+RUN cd /opt ; git clone -b v0.8.2 https://github.com/NodeBB/NodeBB nodebb
+RUN cd /opt/nodebb ; npm install --production
 
 # Create a nodebb volume
 VOLUME /opt/nodebb
