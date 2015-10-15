@@ -1,22 +1,20 @@
-FROM centos:centos7
+# Pull base image.
+FROM ubuntu:latest
 MAINTAINER TenxCloud Team <service@tenxcloud.com>
 
-# install main packages:
-RUN yum -y update ; yum clean all
-RUN yum -y install epel-release tar ; yum clean all
-RUN yum -y install wget ; yum clean all
-RUN yum -y groupinstall "Development Tools"
-RUN yum -y install nodejs git ImageMagick npm
-RUN yum -y install openssl openssl-devel
+# Install base packages
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install nodejs nodejs-legacy npm imagemagick git -y
 
-# clone nodebb and install it
-RUN cd /opt ; git clone -b v0.8.2 https://github.com/NodeBB/NodeBB nodebb
-RUN cd /opt/nodebb ; npm install --production
+# Install nodebb
+RUN cd /opt && git clone -b v0.8.2 https://github.com/NodeBB/NodeBB nodebb
+RUN cd /opt/nodebb && npm install
 
-# Create a nodebb volume
+# Create a mountable volume
 VOLUME /opt/nodebb
 
-# Define a working directory
+# Define working directory.
 WORKDIR /opt/nodebb
 
 # Expose ports
@@ -24,4 +22,5 @@ EXPOSE 80
 EXPOSE 443
 EXPOSE 4567
 
-CMD [ "node", "app.js" ]
+# Define default command.
+CMD ["node", "app.js"]
