@@ -1,5 +1,5 @@
 FROM centos:centos7
-MAINTAINER TenxCloud Team <service@tenxcloud.org>
+MAINTAINER TenxCloud Team <service@tenxcloud.com>
 
 # install main packages:
 RUN yum -y update ; yum clean all
