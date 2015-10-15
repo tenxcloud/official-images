@@ -12,9 +12,6 @@ RUN mkdir /data
 RUN cd /data && git clone -b v0.8.2 https://github.com/NodeBB/NodeBB nodebb
 RUN cd /data/nodebb && npm install
 
-# Create a mountable volume
-VOLUME /data/nodebb
-
 # Define working directory.
 WORKDIR /data/nodebb
 
