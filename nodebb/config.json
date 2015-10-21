@@ -1,0 +1,11 @@
+{
+    "url": "http://localhost:4567",
+    "secret": "27de9569-aee2-401d-b736-081992aeb019",
+    "database": "redis",
+    "redis": {
+        "host": "redis-huangqgiu1l.tenxcloud.net",
+        "port": "21497",
+        "password": "",
+        "database": "0"
+    }
+}

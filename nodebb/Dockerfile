@@ -11,6 +11,7 @@ WORKDIR /opt/nodebb
 
 # Install the dependencies modules
 RUN npm install
+RUN npm install qjmiao/nodebb-plugin-sso-qq
 
 # Expose ports
 EXPOSE 4567
