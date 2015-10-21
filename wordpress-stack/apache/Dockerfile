@@ -14,11 +14,11 @@ ENV WORDPRESS_VERSION 4.3.1
 ENV WORDPRESS_SHA1 b2e5652a6d2333cabe7b37459362a3e5b8b66221
 
 # upstream tarballs include ./wordpress/ so this gives us /usr/src/wordpress
-RUN curl -o wordpress.tar.gz -SL https://cn.wordpress.org/wordpress-4.3.1-zh_CN.tar.gz \
-	&& echo "$WORDPRESS_SHA1 *wordpress.tar.gz" | sha1sum -c - \
-	&& tar -xzf wordpress.tar.gz -C /usr/src/ \
-	&& rm wordpress.tar.gz \
-	&& chown -R www-data:www-data /usr/src/wordpress
+RUN curl -o wordpress.tar.gz -SL https://cn.wordpress.org/wordpress-4.3.1-zh_CN.tar.gz
+RUN echo "$WORDPRESS_SHA1 *wordpress.tar.gz" | sha1sum -c -
+RUN tar -xzf wordpress.tar.gz -C /usr/src/
+RUN rm wordpress.tar.gz
+RUN chown -R www-data:www-data /usr/src/wordpress
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
